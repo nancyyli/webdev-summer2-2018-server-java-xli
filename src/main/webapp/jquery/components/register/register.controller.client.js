@@ -1,11 +1,21 @@
 (function () {
 
-    var registerBtn = $('#registerBtn');
-    var usernameFld = $('#username');
-    var passwordFld = $('#password');
-    var password2Fld = $('#validate-password');
+    var registerBtn;
+    var usernameFld;
+    var passwordFld;
+    var password2Fld;
+    var userService = new UserServiceClient();
 
-    registerBtn.click(registerHandler);
+    function init() {
+        registerBtn = $('#registerBtn');
+        usernameFld = $('#username');
+        passwordFld = $('#password');
+        password2Fld = $('#validate-password');
+
+        registerBtn.click(registerHandler);
+    }
+
+
 
     function registerHandler() {
         var usernameStr = usernameFld.val();
@@ -17,15 +27,32 @@
             password: passwordStr
         };
 
-        var userObjStr = JSON.stringify(userObj);
-
-        fetch('/register', {
-            method: 'post',
-            body: userObjStr,
-            headers: {
-                'Content-Type': 'application/json'
+        userService.findUserByUsername(usernameStr).then( function(response) {
+            return response.text();
+        }).then(function(user) {
+            if(user.length == 0) {
+                registerUser(userObj);
+            }
+            else {
+                displayErrorMessage();
             }
         });
-
     }
+    function displayErrorMessage() {
+        $('.user-exist-message').css('display', 'block');
+    }
+
+    function registerUser(userObj) {
+        userService.register(userObj).then(registrationSuccessful, registrationFailed);
+    }
+
+    function registrationSuccessful() {
+        window.location.href = '../profile/profile.template.client.html';
+    }
+    function registrationFailed() {
+        alert('oops registration failed');
+    }
+
+
+    $(init);
 })();

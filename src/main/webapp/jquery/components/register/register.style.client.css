@@ -1,0 +1,16 @@
+.register {
+    font-family: "Arial", Helvetica, sans-serif;
+    display: inline-block;
+}
+
+label {
+    width: 150px;
+}
+.register-btn {
+    padding: 20px;
+}
+
+.user-exist-message {
+    display: none;
+    color: #F00;
+}
