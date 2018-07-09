@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration Page</title>
+    </head>
+    <body>
+        <h1>Register</h1>
+        <div class="username">
+            <label for="username">Username</label>
+            <input type="text" placeholder="bobert" id="username"/>
+        </div>
+        <div class="password">
+            <label for="password">Password</label>
+            <input type="text" placeholder="password" id="password"/>
+        </div>
+        <div class="validate-password">
+            <label for="validate-password">Validate Password</label>
+            <input type="text" placeholder="validate" id="validate-password"/>
+        </div>
+        <button id="registerBtn">Register</button>
+
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+
+        <script src="register.controller.client.js"></script>
+
+    </body>
 </html>
