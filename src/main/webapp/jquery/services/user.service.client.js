@@ -8,7 +8,8 @@ function UserServiceClient() {
     this.findUserByUserName = findUserByUserName;
     this.login = login;
     this.updateProfile = updateProfile;
-    this.logout = logout;
+    this.getProfile = getProfile;
+
     this.url = 'http://localhost:8080/api/user';
     var self = this;
     function createUser(user) {
@@ -67,10 +68,10 @@ function UserServiceClient() {
         return fetch('/api/register', {
             method: 'post',
             body: userObjStr,
+            credentials : 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
-            'credentials' : 'include'
         });
     }
 
@@ -78,15 +79,37 @@ function UserServiceClient() {
         return fetch('/api/login', {
             method: 'post',
             body: JSON.stringify(user),
+            credentials: 'include',
             headers: {
                 'content-type': 'application/json'
-            },
-            'credentials' : 'include'
+            }
         });
     }
 
     function updateProfile(user) {
+        return fetch('/api/profile/update', {
+              method: 'put',
+              body: JSON.stringify(user),
+              credentials: 'include',
+              headers: {
+                  'content-type': 'application/json'
+              }
+          })
+        .then(function(response){
+            if(response.bodyUsed) {
+                return response.json();
+            } else {
+                return null;
+            }
+        });
+    }
 
+    function getProfile() {
+        return fetch('/api/profile', {
+            'credentials': 'include'
+        }).then(function (response) {
+            return response.json();
+        });
     }
 
     function logout(user) {

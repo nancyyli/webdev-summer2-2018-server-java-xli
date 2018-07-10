@@ -87,5 +87,46 @@ public class UserService {
       return null;
     }
 
+  @PutMapping("/api/profile/update")
+  public User updateProfile(@RequestBody User user, HttpSession session) {
+    Optional<User> currentUser = (Optional<User>) session.getAttribute("currentUser");
+    if (currentUser.isPresent()) {
+      User currentUserData = currentUser.get();
+      if (currentUserData.getUsername().equals(user.getUsername())) {
+        int userId = currentUserData.getId();
+        Optional<User> data = repository.findById(userId);
+        if(data.isPresent()) {
+          User updateUser = data.get();
+          updateUser.setFirstName(user.getFirstName());
+          updateUser.setLastName(user.getLastName());
+          updateUser.setRole(user.getRole());
+          updateUser.setPhone(user.getPhone());
+          updateUser.setEmail(user.getEmail());
+          updateUser.setDateOfBirth(user.getDateOfBirth());
+          repository.save(updateUser);
+          return updateUser;
+        }
+        return null;
+      }
+    }
+    return null;
+  }
+
+  @GetMapping("/api/profile")
+  public User profile(HttpSession session) {
+      Optional<User> user = (Optional<User>) session.getAttribute("currentUser");
+      if (user.isPresent()) {
+        return repository.findById(user.get().getId()).get();
+      }
+      return null;
+  }
+
+  @PostMapping("/api/logout")
+  public User logout(HttpSession session) {
+      return null;
+  }
+
+
+
 
 }

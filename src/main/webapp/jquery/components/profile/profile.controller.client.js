@@ -21,27 +21,24 @@
         lastName = $('#lastNameFld');
         role = $('#roleFld');
         dateOfBirth = $('#dobFld');
-
-        updateBtn.click(updateUser);
+        
+        updateBtn.click(updateProfile);
 
         profile()
             .then(renderUser);
     }
 
-    function updateUser() {
+    function updateProfile() {
         var user = {
-            firstName: $firstName.val(),
-            lastName: $lastName.val()
-        };
-
-        fetch("/api/user/" + currentUser.id, {
-                                                 method: 'put',
-                                                 body: JSON.stringify(user),
-                                                 'credentials': 'include',
-                                                 headers: {
-                                                     'content-type': 'application/json'
-                                                 }
-                                             });
+            'username' : userName.val(),
+            'firstName' : firstName.val(),
+            'lastName' : lastName.val(),
+            'role' : role.val(),
+            'email' : email.val(),
+            'phone' : phone.val(),
+            'dateOfBirth' : dateOfBirth.val()
+        }
+        userService.updateProfile(user).then(renderUser);
     }
 
     function renderUser(user) {
@@ -56,24 +53,10 @@
     }
 
     function profile() {
-
-        return fetch('/profile', {
-            'credentials': 'include'
-        })
-            .then(function (response) {
-                return response.json();
-            });
+        return userService.getProfile();
     }
 
-    function findUserById(userId) {
-        userService.findUserById(userId);
-    }
-
-    function handleResponse() {
-
-    }
-
-    function logOut() {
+    function logout() {
 
     }
 
