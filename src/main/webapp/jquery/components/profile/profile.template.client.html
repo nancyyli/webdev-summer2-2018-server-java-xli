@@ -3,8 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+
+    <link href="profile.style.client.css" rel="stylesheet" />
+    <link rel="stylesheet" href=
+            "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href=
+            "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../services/user.service.client.js"></script>
+    <script src="profile.controller.client.js"></script>
 </head>
 <body>
-    <h2>Profile</h2>
+<div class="container">
+    <h1 id="title">Profile</h1>
+
+    <form>
+        <div class="form-group row">
+            <label for="staticUsername" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="staticUsername" value="bobert">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail" value="email@example.com">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputPhone" placeholder="Phone Number">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="firstName" class="col-sm-2 col-form-label">
+                First Name
+            </label>
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       id="firstName"
+                       placeholder="first name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastName"
+                   class="col-sm-2 col-form-label">
+                Last Name
+            </label>
+            <div class="col-sm-10">
+                <input type="text"
+                       class="form-control"
+                       id="lastName"
+                       placeholder="last">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputRole"
+                   class="col-sm-2 col-form-label">
+                Role
+            </label>
+            <div class="col-sm-10">
+                <select id="inputRole" class="form-control">
+                    <option value="FACULTY">Faculty</option>
+                    <option value="STUDENT">Student</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="inputDOB"
+                   class="col-sm-2 col-form-label">
+                Date of Birth
+            </label>
+            <div class="col-sm-10">
+                <input type="date"
+                       class="form-control"
+                       id="inputDOB">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <button id="updateBtn"
+                        type="button"
+                        class="btn btn-success btn-block">Update</button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <button id="logoutBtn"
+                        type="button"
+                        class="btn btn-danger btn-block">Log Out</button>
+            </div>
+        </div>
+    </form>
+
+</div>
 </body>
 </html>
