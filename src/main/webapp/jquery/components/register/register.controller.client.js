@@ -27,16 +27,16 @@
             password: passwordStr
         };
 
-        userService.findUserByUsername(usernameStr).then( function(response) {
-            return response.text();
-        }).then(function(user) {
-            if(user.length == 0) {
-                registerUser(userObj);
-            }
-            else {
-                displayErrorMessage();
-            }
-        });
+        userService.findUserByUserName(usernameStr)
+            .then(function(response){
+                return response.text();
+            }).then(function(user) {
+                if(user.length) {
+                    displayErrorMessage();
+                } else {
+                    registerUser(userObj);
+                }
+            });
     }
     function displayErrorMessage() {
         $('.user-exist-message').css('display', 'block');
@@ -47,7 +47,7 @@
     }
 
     function registrationSuccessful() {
-        window.location.href = '../profile/profile.template.client.html';
+        // window.location.href = '../profile/profile.template.client.html';
     }
     function registrationFailed() {
         alert('oops registration failed');

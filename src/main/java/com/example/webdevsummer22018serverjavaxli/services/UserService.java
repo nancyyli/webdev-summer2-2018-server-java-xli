@@ -7,6 +7,8 @@ import java.util.*;
 import com.example.webdevsummer22018serverjavaxli.models.User;
 import com.example.webdevsummer22018serverjavaxli.repositories.UserRepository;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class UserService {
     @Autowired
@@ -57,9 +59,19 @@ public class UserService {
       return null;
     }
 
-    @GetMapping("/api/user/{userName}")
+    @PostMapping("/api/register")
+    public User register(@RequestBody User user, HttpSession session) {
+      User currentUser = findUserByUsername(user.getUsername());
+      if (currentUser == null) {
+        currentUser = createUser(user);
+      }
+      session.setAttribute("currentUser", currentUser);
+      return currentUser;
+    }
+
+    @GetMapping("/api/user/username/{userName}")
     public User findUserByUsername(@PathVariable("userName") String userName) {
-      Optional<User> data = repository.findUserByusername(userName);
+      Optional<User> data = repository.findUserByUsername(userName);
       if(data.isPresent()) {
         return data.get();
       }
