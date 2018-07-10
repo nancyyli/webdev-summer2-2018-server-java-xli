@@ -7,6 +7,7 @@ function UserServiceClient() {
     this.register = register;
     this.findUserByUserName = findUserByUserName;
     this.login = login;
+    this.logout = logout;
     this.updateProfile = updateProfile;
     this.getProfile = getProfile;
 
@@ -113,7 +114,14 @@ function UserServiceClient() {
     }
 
     function logout(user) {
-
+        return fetch('/api/logout', {
+            method: 'post',
+            body: JSON.stringify(user),
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
     }
 
 }

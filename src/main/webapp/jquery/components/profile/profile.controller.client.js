@@ -9,7 +9,6 @@
         role,
         dateOfBirth,
         userService = new UserServiceClient();
-    var currentUser = null;
 
     function init() {
         updateBtn = $('#updateBtn');
@@ -21,8 +20,10 @@
         lastName = $('#lastNameFld');
         role = $('#roleFld');
         dateOfBirth = $('#dobFld');
-        
+
+
         updateBtn.click(updateProfile);
+        logoutBtn.click(logout);
 
         profile()
             .then(renderUser);
@@ -42,7 +43,6 @@
     }
 
     function renderUser(user) {
-        currentUser = user;
         $('#staticUsername').val(user.username);
         $('#firstNameFld').val(user.firstName);
         $('#lastNameFld').val(user.lastName);
@@ -57,7 +57,20 @@
     }
 
     function logout() {
+        var user = {
+            'username' : userName.val(),
+            'firstName' : firstName.val(),
+            'lastName' : lastName.val(),
+            'role' : role.val(),
+            'email' : email.val(),
+            'phone' : phone.val(),
+            'dateOfBirth' : dateOfBirth.val()
+        }
+        userService.logout(user).then(navigateToLogin);
+    }
 
+    function navigateToLogin() {
+        window.location.href = '../login/login.template.client.html';
     }
 
     $(init);
