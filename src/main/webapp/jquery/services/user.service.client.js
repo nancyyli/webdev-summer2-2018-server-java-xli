@@ -28,6 +28,7 @@ function UserServiceClient() {
             });
     }
     function updateUser(userId, user) {
+        console.log(user);
         return fetch(self.url + '/' + userId, {
               method: 'put',
               body: JSON.stringify(user),
