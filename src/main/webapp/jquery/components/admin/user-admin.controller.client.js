@@ -39,7 +39,7 @@
     }
 
     function findUserById(userID) {
-        return userService.findUserById(userID);
+        userService.findUserById(userID).then(renderUser);
     }
 
     function deleteUser() {
@@ -62,6 +62,7 @@
 
         var userId = userColumn
             .attr('id');
+        findUserById(userId);
         $(userColumn).addClass('selected');
         $('.wbdv-form').attr('id', userId);
     }
@@ -84,8 +85,14 @@
         userService.updateUser(userId, user).then(findAllUsers);
     }
     function renderUser(user) {
+        $('#usernameFld').val(user.username);
+        $('#passwordFld').val(user.password);
+        $('#firstNameFld').val(user.firstName);
+        $('#lastNameFld').val(user.lastName);
+        $('#roleFld').val(user.role);
 
     }
+
     function renderUsers(users) {
         tbody.empty();
         for(var i=0; i<users.length; i++) {
