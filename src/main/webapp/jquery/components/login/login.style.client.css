@@ -1,0 +1,13 @@
+.invalid-login {
+    display: none;
+    color: red;
+}
+
+h1 {
+    padding: 20px 0;
+}
+
+.form-group.username,
+.form-group.password {
+    margin-bottom: 30px;
+}
