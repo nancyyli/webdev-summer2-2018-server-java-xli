@@ -15,13 +15,13 @@ function UserServiceClient() {
             }
         });
     }
-    function findAllUsers(callback) {
+    function findAllUsers() {
         return fetch(self.url)
         .then(function (response) {
             return response.json();
         });
     }
-    function findUserById(userId, callback) {
+    function findUserById(userId) {
         return fetch(self.url + '/' + userId)
             .then(function(response){
                 return response.json();

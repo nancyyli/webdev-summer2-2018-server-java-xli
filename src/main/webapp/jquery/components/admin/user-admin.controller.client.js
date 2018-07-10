@@ -1,8 +1,4 @@
 (function () {
-    var $usernameFld, $passwordFld;
-    var $removeBtn, $editBtn, $createBtn;
-    var $firstNameFld, $lastNameFld;
-    var $userRowTemplate, $tbody;
     var tbody;
     var template;
     var userService = new UserServiceClient();
@@ -32,13 +28,17 @@
             .createUser(user)
             .then(findAllUsers);
     }
+
     function findAllUsers() {
         userService
             .findAllUsers()
             .then(renderUsers);
     }
-    function findUserById() {
+
+    function findUserById(userID) {
+        userService.findUserById(userID);
     }
+
     function deleteUser() {
         var deleteBtn = $(event.currentTarget);
         var userId = deleteBtn
@@ -60,6 +60,25 @@
 
     }
     function renderUsers(users) {
+        tbody.empty();
+        console.log(users.length);
+        for(var i=0; i<users.length; i++) {
+            var user = users[i];
+            var clone = template.clone();
 
+            clone.attr('id', user.id);
+
+            clone.find('.delete').click(deleteUser);
+
+            // clone.find('.edit').click(editUser);
+
+            clone.find('.username')
+                .html(user.username);
+            clone.find('.firstname')
+                .html(user.firstName);
+            clone.find('.lastname')
+                .html(user.lastName);
+            tbody.append(clone);
+        }
     }
 })();
