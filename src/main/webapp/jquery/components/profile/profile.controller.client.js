@@ -46,12 +46,17 @@
 
     function renderUser(user) {
         currentUser = user;
-        $username.val(user.username);
-        $firstName.val(user.firstName);
-        $lastName.val(user.lastName);
+        $('#staticUsername').val(user.username);
+        $('#firstNameFld').val(user.firstName);
+        $('#lastNameFld').val(user.lastName);
+        $('#roleFld').val(user.role);
+        $('#emailFld').val(user.email);
+        $('#phoneFld').val(user.phone);
+        $('#dobFld').val(user.dateOfBirth);
     }
 
     function profile() {
+
         return fetch('/profile', {
             'credentials': 'include'
         })
@@ -61,13 +66,14 @@
     }
 
     function findUserById(userId) {
-        return fetch('/api/user/' + userId)
-            .then(function (response) {
-                return response.json();
-            });
+        userService.findUserById(userId);
     }
 
     function handleResponse() {
+
+    }
+
+    function logOut() {
 
     }
 

@@ -7,6 +7,8 @@ function UserServiceClient() {
     this.register = register;
     this.findUserByUserName = findUserByUserName;
     this.login = login;
+    this.updateProfile = updateProfile;
+    this.logout = logout;
     this.url = 'http://localhost:8080/api/user';
     var self = this;
     function createUser(user) {
@@ -81,6 +83,14 @@ function UserServiceClient() {
             },
             'credentials' : 'include'
         });
+    }
+
+    function updateProfile(user) {
+
+    }
+
+    function logout(user) {
+
     }
 
 }
