@@ -26,9 +26,9 @@ public class UserService {
 
     @PostMapping("/api/login")
     public User login(@RequestBody User user, HttpSession session) {
-      Optional<User> currentUser = repository.findUserByUserNameAndPassword(user.getUsername(), user.getPassword());
+      Optional<User> currentUser = repository.findUserByCredentials(user.getUsername(), user.getPassword());
       if (currentUser.isPresent()) {
-        session.setAttribute("currentUser", currentUser);
+        session.setAttribute("currentUser", currentUser.get());
         return (User) currentUser.get();
       }
       return null;
@@ -86,6 +86,42 @@ public class UserService {
       }
       return null;
     }
+
+  @PutMapping("/api/profile/update")
+  public User updateProfile(@RequestBody User user, HttpSession session) {
+    User currentUserData = (User) session.getAttribute("currentUser");
+    if (currentUserData != null && currentUserData.getUsername().equals(user.getUsername())) {
+      int userId = currentUserData.getId();
+      Optional<User> data = repository.findById(userId);
+      if(data.isPresent()) {
+        User updateUser = data.get();
+        updateUser.setFirstName(user.getFirstName());
+        updateUser.setLastName(user.getLastName());
+        updateUser.setRole(user.getRole());
+        updateUser.setPhone(user.getPhone());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setDateOfBirth(user.getDateOfBirth());
+        repository.save(updateUser);
+        return updateUser;
+      }
+      return null;
+    }
+    return null;
+  }
+
+  @GetMapping("/api/profile")
+  public User profile(HttpSession session) {
+      User user = (User) session.getAttribute("currentUser");
+      return repository.findById(user.getId()).get();
+  }
+
+  @PostMapping("/api/logout")
+  public User logout(HttpSession session) {
+      session.invalidate();
+      return null;
+  }
+
+
 
 
 }

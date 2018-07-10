@@ -90,7 +90,6 @@
         $('#firstNameFld').val(user.firstName);
         $('#lastNameFld').val(user.lastName);
         $('#roleFld').val(user.role);
-
     }
 
     function renderUsers(users) {

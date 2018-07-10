@@ -1,6 +1,9 @@
-.invalid-login {
+.form-control.invalid-login {
     display: none;
     color: red;
+    background-color: #ffcdd2;
+    border: none;
+    margin-bottom: 20px;
 }
 
 h1 {

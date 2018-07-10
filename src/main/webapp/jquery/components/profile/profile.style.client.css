@@ -1,0 +1,24 @@
+h1 {
+    padding: 20px 0;
+}
+
+.form-control.update-success {
+    display: none;
+    color: green;
+    background-color: #c8e6c9;
+    border: none;
+    margin-bottom: 20px;
+}
+
+#staticUsername {
+    background-color: #D3D3D3;
+}
+
+.form-group.username,
+.form-group.email,
+.form-group.last-name,
+.form-group.first-name,
+.form-group.role,
+.form-group.phone{
+    margin-bottom: 30px;
+}
