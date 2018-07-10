@@ -39,7 +39,12 @@
             'phone' : phone.val(),
             'dateOfBirth' : dateOfBirth.val()
         }
-        userService.updateProfile(user).then(renderUser);
+        userService.updateProfile(user).then(successUpdateProfile(user));
+    }
+
+    function successUpdateProfile(user) {
+        renderUser(user);
+        $('.update-success').css('display', 'block');
     }
 
     function renderUser(user) {
