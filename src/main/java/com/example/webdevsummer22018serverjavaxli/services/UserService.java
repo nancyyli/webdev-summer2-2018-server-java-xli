@@ -90,7 +90,7 @@ public class UserService {
   @PutMapping("/api/profile/update")
   public User updateProfile(@RequestBody User user, HttpSession session) {
     User currentUserData = (User) session.getAttribute("currentUser");
-    if (currentUserData.getUsername().equals(user.getUsername())) {
+    if (currentUserData != null && currentUserData.getUsername().equals(user.getUsername())) {
       int userId = currentUserData.getId();
       Optional<User> data = repository.findById(userId);
       if(data.isPresent()) {
