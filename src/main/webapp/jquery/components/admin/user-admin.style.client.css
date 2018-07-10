@@ -1,0 +1,41 @@
+h1 {
+    padding: 10px 0;
+}
+
+.selected {
+    background-color: #D3D3D3;
+}
+
+tr {
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    border: none;
+}
+
+#input-form .th {
+    border: none;
+}
+
+#wbdv-actions {
+    float: right;
+    border: none;
+}
+
+.table .wbdv-username,
+.table .wbdv-password,
+.table .wbdv-firstname,
+.table .wbdv-lastname,
+.table .wbdv-role
+{
+    padding: 20px;
+}
+
+.wbdv-remove,
+.wbdv-edit,
+.wbdv-search,
+.wbdv-create,
+.wbdv-update{
+    padding: 5px;
+}
