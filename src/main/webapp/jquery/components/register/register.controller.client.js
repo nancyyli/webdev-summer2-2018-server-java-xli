@@ -26,22 +26,30 @@
             username: usernameStr,
             password: passwordStr
         };
-
-        userService.findUserByUserName(usernameStr)
-            .then(function(response){
-                return response.text();
-            }).then(function(user) {
+        if (passwordStr != password2Str) {
+            displayInvalidPasswordMessage();
+        }
+        else {
+            $('.invalidate-password-message').css('display', 'none');
+            userService.findUserByUserName(usernameStr)
+                .then(function(response){
+                    return response.text();
+                }).then(function(user) {
                 if(user.length) {
                     displayErrorMessage();
                 } else {
                     registerUser(userObj);
                 }
             });
+        }
     }
     function displayErrorMessage() {
         $('.user-exist-message').css('display', 'block');
     }
 
+    function displayInvalidPasswordMessage() {
+        $('.invalidate-password-message').css('display', 'block');
+    }
     function registerUser(userObj) {
         userService.register(userObj).then(registrationSuccessful, registrationFailed);
     }
