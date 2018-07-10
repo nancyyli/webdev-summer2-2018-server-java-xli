@@ -1,8 +1,8 @@
-package com.example.webdevsummer22018serverjavaxli.repositories;
+package webdev.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import com.example.webdevsummer22018serverjavaxli.models.User;
+import webdev.models.User;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
