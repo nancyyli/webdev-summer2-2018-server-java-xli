@@ -1,0 +1,49 @@
+
+.h1 {
+    padding-bottom: 20px;
+}
+.user-exist-message {
+    display: none;
+    color: red;
+}
+
+.register {
+    padding: 50px;
+}
+
+.username,
+.password,
+.validate-password,
+.register-btn {
+    padding-top: 20px;
+}
+
+label {
+    width: 10%;
+}
+
+input {
+    width: 20%;
+}
+
+#registerBtn {
+    width: 30%;
+}
+
+@media only screen and (max-width: 900px) {
+    .username label,
+    .password label,
+    .validate-password label {
+        display: block;
+    }
+
+    input {
+        width: 40%;
+    }
+    
+    #registerBtn {
+        width: 40%;
+    }
+
+
+}

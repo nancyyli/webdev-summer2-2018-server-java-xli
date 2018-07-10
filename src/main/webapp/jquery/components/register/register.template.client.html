@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+
+    <link href="register.style.client.css" rel="stylesheet" />
+    <link rel="stylesheet" href=
+            "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href=
+            "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../services/user.service.client.js"></script>
+    <script src="register.controller.client.js"></script>
+</head>
+<body>
+    <div class="register">
+        <h1>Register</h1>
+        <div class="user-exist-message">Username already exists. Please choose another username or
+            <a href="../login/login.template.client.html">
+                Login
+            </a>
+        </div>
+        <div class="username">
+            <label for="username">Username</label>
+            <input type="text" placeholder="bobert" id="username"/>
+        </div>
+        <div class="password">
+            <label for="password">Password</label>
+            <input type="text" placeholder="password" id="password"/>
+        </div>
+        <div class="validate-password">
+            <label for="validate-password">Validate Password</label>
+            <input type="text" placeholder="validate" id="validate-password"/>
+        </div>
+        <div class="register-btn">
+            <button id="registerBtn" class="btn-primary btn">Register</button>
+        </div>
+
+        <a href="../login/login.template.client.html">
+            Login
+        </a>
+    </div>
+</body>
+</html>
