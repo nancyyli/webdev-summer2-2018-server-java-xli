@@ -56,4 +56,13 @@ public class UserService {
       }
       return null;
     }
+
+    @GetMapping("/api/user/{userName}")
+    public User findUserByUsername(@PathVariable("userName") String userName) {
+      Optional<User> data = repository.findUserByusername(userName);
+      if(data.isPresent()) {
+        return data.get();
+      }
+      return null;
+    }
 }
