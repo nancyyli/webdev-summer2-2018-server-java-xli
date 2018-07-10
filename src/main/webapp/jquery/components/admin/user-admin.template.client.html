@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>User Admin Page</title>
 
+    <link href="user-admin.style.client.css" rel="stylesheet" />
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link href="user-admin.style.client.css" rel="stylesheet" />
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../../services/user.service.client.js"></script>
@@ -19,7 +19,7 @@
     <h1 id="title">User Admin</h1>
     <table class="table">
         <thead>
-        <tr>
+        <tr id="input-form">
             <th>Username</th>
             <th>Password</th>
             <th>First Name</th>
@@ -50,12 +50,12 @@
         </thead>
         <tbody>
         <tr class="template">
-            <td class="wbdv-username">alice</td>
-            <td>****</td>
-            <td class="wbdv-firstname">Alice</td>
-            <td class="wbdv-lastname">Wonderland</td>
+            <td class="wbdv-username"></td>
+            <td class="wbdv-password">****</td>
+            <td class="wbdv-firstname"></td>
+            <td class="wbdv-lastname"></td>
             <td class="wbdv-role">FACULTY</td>
-            <th class="wbdv-actions">
+            <th id="wbdv-actions">
               <i id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove"></i>
               <i id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit"></i>
             </th>
