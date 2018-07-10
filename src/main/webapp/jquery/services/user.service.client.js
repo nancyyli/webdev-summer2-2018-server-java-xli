@@ -73,12 +73,13 @@ function UserServiceClient() {
     }
 
     function login(user) {
-        return fetch(self.login, {
+        return fetch('/api/login', {
             method: 'post',
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            'credentials' : 'include'
         });
     }
 

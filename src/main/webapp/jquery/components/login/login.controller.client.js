@@ -14,14 +14,27 @@
 
     function login() {
         var user = {
-            'username': username.val(),
-            "password": password.val()
+            'username': usernameFld.val(),
+            "password": passwordFld.val()
         };
-        userService.login(user).then(navigateToProfile);
+
+        userService.login(user).then(function(response){
+            return response.text();
+        }).then(function(user) {
+            if(user.length) {
+                navigateToProfile();
+            } else {
+                displayErrorMessage();
+            }
+        });
+    }
+
+    function displayErrorMessage() {
+        $('.invalid-login').css('display', 'block');
     }
 
     function navigateToProfile() {
-        window.location.href = '/profile.template.client.html';
+        window.location.href = '../profile/profile.template.client.html';
     }
 
     $(init);
