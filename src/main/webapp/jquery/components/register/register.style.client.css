@@ -1,13 +1,6 @@
 
 
-.form-control.user-exist-message {
-    display: none;
-    color: red;
-    background-color: #ffcdd2;
-    border: none;
-    margin-bottom: 20px;
-}
-
+.form-control.user-exist-message,
 .form-control.invalidate-password-message {
     display: none;
     color: red;
@@ -15,6 +8,8 @@
     border: none;
     margin-bottom: 20px;
 }
+
+
 h1 {
     padding: 20px 0;
 }
