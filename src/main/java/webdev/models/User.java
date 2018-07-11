@@ -1,4 +1,4 @@
-package com.example.webdevsummer22018serverjavaxli.models;
+package webdev.models;
 
 import java.sql.Date;
 
