@@ -11,6 +11,6 @@ import java.util.Optional;
 
 
 public interface ModuleRepository extends CrudRepository<Module, Integer> {
-  @Query("SELECT m FROM Module m WHERE m.course.id AND courseId")
+  @Query("SELECT m FROM Module m WHERE m.course.id=:courseId")
   List<Module> findModulesByCourse(@Param("courseId") Integer courseId);
 }
