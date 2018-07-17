@@ -13,5 +13,6 @@ import java.util.Optional;
 
 
 public interface LessonRepository extends CrudRepository<Lesson, Integer> {
-
+    @Query("SELECT l FROM Lesson l WHERE l.module.id=:moduleId")
+    List<Lesson> findLessonsByModule(@Param("moduleId") Integer moduleId);
 }
