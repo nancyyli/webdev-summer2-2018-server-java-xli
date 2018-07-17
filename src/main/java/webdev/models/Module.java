@@ -2,6 +2,7 @@ package webdev.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -14,6 +15,8 @@ public class Module {
     @ManyToOne
     @JsonIgnore
     private Course course;
+    @OneToMany(mappedBy="module")
+    private List<Lesson> lessons;
 
     public int getId() {
       return id;
@@ -36,5 +39,13 @@ public class Module {
     }
     public void setCourse(Course course) {
       this.course = course;
+    }
+
+    public List<Lesson> getLessons() {
+      return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+      this.lessons = lessons;
     }
 }

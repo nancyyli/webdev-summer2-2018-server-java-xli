@@ -32,7 +32,7 @@ public class Lesson {
     public void setTitle(String title) {
       this.title = title;
     }
-  
+
     public void setModule(Module module) {
       this.module = module;
     }
