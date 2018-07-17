@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+import webdev.models.Course;
 import webdev.models.Module;
+import webdev.repositories.CourseRepository;
 import webdev.repositories.ModuleRepository;
 
 @CrossOrigin(origins = "*", maxAge=3600)
@@ -21,12 +23,21 @@ import webdev.repositories.ModuleRepository;
 public class ModuleService {
   @Autowired
   ModuleRepository repository;
+  @Autowired
+  CourseRepository courseRepository;
 
   @PostMapping("/api/course/{courseId}/module")
-  public Module createModule(@PathVariable("courseId") int courseId, @RequestBody Module newModule) {
-    repository.save(newModule);
-    //TODO add new module to Course too later
-    return newModule;
+  public Module createModule(@PathVariable("courseId") int courseId, @RequestBody Module module) {
+    Module newModule = new Module();
+    Optional<Course> course = courseRepository.findById(courseId);
+    if (course.isPresent()) {
+      newModule.setTitle(module.getTitle());
+      newModule.setCourse(course.get());
+      repository.save(newModule);
+      //TODO add new module to Course too later
+      return newModule;
+    }
+    return null;
   }
 
   @DeleteMapping("/api/module/{moduleId}")
@@ -51,7 +62,7 @@ public class ModuleService {
   @GetMapping("/api/course/{courseId}/module")
   public List<Module> findAllModulesForCourse(@PathVariable("courseId") int courseId) {
       //TODO: implement a repository method
-      return (List<Module>)repository.findAll();
+      return repository.findModulesByCourse(courseId);
   }
 
   @PutMapping("/api/module/{moduleId}")
