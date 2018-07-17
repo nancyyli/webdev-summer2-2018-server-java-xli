@@ -58,7 +58,7 @@ public class Course {
 
     public void setModified() {
       this.modified = new Date();
-    } 
+    }
 
     public List<Module> getModules() {
       return modules;
