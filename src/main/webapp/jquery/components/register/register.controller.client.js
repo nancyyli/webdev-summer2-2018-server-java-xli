@@ -51,8 +51,7 @@
         $('.invalidate-password-message').css('display', 'block');
     }
     function registerUser(userObj) {
-        userService.register(userObj).then(function(response) { console.log(response)})
-        // userService.register(userObj).then(registrationSuccessful, registrationFailed);
+        userService.register(userObj).then(registrationSuccessful, registrationFailed);
     }
 
     function registrationSuccessful() {
