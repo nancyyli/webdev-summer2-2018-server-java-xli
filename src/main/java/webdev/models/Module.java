@@ -31,6 +31,9 @@ public class Module {
       this.title = title;
     }
 
+    public Course getCourse() {
+      return course;
+    }
     public void setCourse(Course course) {
       this.course = course;
     }
