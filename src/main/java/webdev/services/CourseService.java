@@ -54,11 +54,10 @@ public class CourseService {
   }
 
   @PutMapping("/api/course/{courseId}")
-  public Course updateCourse(@PathVariable("courseId") int courseId, @RequestBody Course newCourse) {
+  public Course updateCourse(@PathVariable("courseId") int courseId) {
     Optional<Course> data = repository.findById(courseId);
     if(data.isPresent()) {
       Course course = data.get();
-      course.setTitle(newCourse.getTitle());
       course.setModified();
       repository.save(course);
       return course;

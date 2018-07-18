@@ -33,6 +33,8 @@ public class ModuleService {
     if (course.isPresent()) {
       newModule.setTitle(module.getTitle());
       newModule.setCourse(course.get());
+      course.get().setModified();
+      courseRepository.save(course.get());
       repository.save(newModule);
       //TODO add new module to Course too later
       return newModule;
