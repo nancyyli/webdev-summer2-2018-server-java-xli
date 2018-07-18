@@ -32,7 +32,7 @@ public class LessonService {
     Optional<Module> module = moduleRepository.findById(moduleId);
     if (module.isPresent()) {
       newLesson.setTitle(lesson.getTitle());
-      newLesson.setModule(lesson.getModule());
+      newLesson.setModule(module.get());
       repository.save(newLesson);
       //TODO add new module to Course too later
       return newLesson;
@@ -42,7 +42,7 @@ public class LessonService {
 
   @DeleteMapping("/api/lesson/{lessonId}")
   public void deleteLesson(@PathVariable("lessonId") int lessonId) {
-    repository.deleteById(lessonId);
+     repository.deleteById(lessonId);
   }
 
   @GetMapping("/api/lesson")
