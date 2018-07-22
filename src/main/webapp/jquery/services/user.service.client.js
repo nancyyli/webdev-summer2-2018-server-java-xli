@@ -11,7 +11,7 @@ function UserServiceClient() {
     this.updateProfile = updateProfile;
     this.getProfile = getProfile;
 
-    this.url = 'https://webdev-summer2-xli.herokuapp.com/api/user';
+    this.url = '/api/user';
     var self = this;
     function createUser(user) {
         return fetch(self.url, {
