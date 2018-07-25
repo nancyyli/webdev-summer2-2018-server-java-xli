@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "Widget_Type")
 public class Widget {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +18,13 @@ public class Widget {
     private String style;
     private String width;
     private String height;
+    private String widgetType;
+    private int size;
+    private String src;
+    private String href;
+    private String listItem;
+    private ListType listType;
+
     @ManyToOne
     @JsonIgnore
     private Lesson lesson;
@@ -91,4 +96,52 @@ public class Widget {
     public void setLesson(Lesson lesson) {
       this.lesson = lesson;
     }
+
+  public String getWidgetType() {
+    return widgetType;
+  }
+
+  public void setWidgetType(String widgetType) {
+    this.widgetType = widgetType;
+  }
+
+  public int getSize() {
+    return size;
+  }
+
+  public void setSize(int size) {
+    this.size = size;
+  }
+
+  public String getSrc() {
+    return src;
+  }
+
+  public void setSrc(String src) {
+    this.src = src;
+  }
+
+  public String getHref() {
+    return href;
+  }
+
+  public void setHref(String href) {
+    this.href = href;
+  }
+
+  public String getListItem() {
+    return listItem;
+  }
+
+  public void setListItem(String listItem) {
+    this.listItem = listItem;
+  }
+
+  public ListType getListType() {
+    return listType;
+  }
+
+  public void setListType(ListType listType) {
+    this.listType = listType;
+  }
 }
