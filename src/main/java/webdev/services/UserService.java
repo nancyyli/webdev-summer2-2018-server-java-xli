@@ -9,6 +9,8 @@ import webdev.repositories.UserRepository;
 
 import javax.servlet.http.HttpSession;
 
+
+@CrossOrigin(origins = "*", maxAge=3600)
 @RestController
 public class UserService {
     @Autowired
